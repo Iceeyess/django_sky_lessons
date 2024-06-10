@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from mainapp.models import Student
 # Create your views here.
 
 
@@ -15,4 +16,9 @@ from django.http import HttpResponse
 
 
 def index(request) -> HttpResponse:
+    student_list = Student.objects.all()
+    objects_list = {
+        'student_list': student_list
+    }
+    return render(request, 'main/index2.html', objects_list)
 
