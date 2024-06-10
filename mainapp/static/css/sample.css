@@ -1,0 +1,3 @@
+<!-- Пример: подключение статического CSS-файла -->
+{% static %}
+<link rel="stylesheet" type="text/css" href="/mainapp/static/css/sample.css">

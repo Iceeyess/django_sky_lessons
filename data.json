@@ -1,0 +1,51 @@
+[
+  {
+    "model": "mainapp.student",
+    "pk": 1,
+    "fields": {
+      "first_name": "Петр",
+      "last_name": "Петров",
+      "avatar": "",
+      "is_active": true
+    }
+  },
+  {
+    "model": "mainapp.student",
+    "pk": 2,
+    "fields": {
+      "first_name": "Иван",
+      "last_name": "Иванов",
+      "avatar": "",
+      "is_active": true
+    }
+  },
+  {
+    "model": "mainapp.student",
+    "pk": 3,
+    "fields": {
+      "first_name": "Семен",
+      "last_name": "Семенов",
+      "avatar": "",
+      "is_active": false
+    }
+  },
+  {
+    "model": "mainapp.student",
+    "pk": 4,
+    "fields": {
+      "first_name": "Dmitry",
+      "last_name": "Korotaev",
+      "avatar": "",
+      "is_active": false
+    }
+  },
+  {
+    "model": "mainapp.student",
+    "fields": {
+      "first_name": "Dmitry",
+      "last_name": "Krasheninnikov",
+      "avatar": "",
+      "is_active": true
+    }
+  }
+]
