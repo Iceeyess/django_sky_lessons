@@ -22,3 +22,7 @@ def index(request) -> HttpResponse:
     }
     return render(request, 'main/index2.html', objects_list)
 
+
+def contact(request) -> HttpResponse:
+    return render(request, 'main/contact.html')
+
