@@ -20,7 +20,7 @@ def index(request) -> HttpResponse:
     objects_list = {
         'student_list': student_list
     }
-    return render(request, 'main/index2.html', objects_list)
+    return render(request, 'main/index3.html', objects_list)
 
 
 def contact(request) -> HttpResponse:
