@@ -24,7 +24,7 @@ admin.site.index_title = 'Здесь могла быть ВАША РЕКЛАМА
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('mainapp.urls')),
+    path('', include('mainapp.urls', namespace='mainapp')),
 ]
 
 if settings.DEBUG:

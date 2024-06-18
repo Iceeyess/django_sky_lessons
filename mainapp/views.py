@@ -1,7 +1,12 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from mainapp.models import Student
+from django.views.generic import ListView
 # Create your views here.
+
+class StudentListView(ListView):
+    model = Student
+    template_name = 'main/index.html'
 
 
 # def index(request) -> HttpResponse:
