@@ -1,7 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from mainapp.models import Student
-from django.views.generic import TemplateView
+from django.views.generic import ListView, DetailView
+
 # Create your views here.
 
 
@@ -19,6 +20,19 @@ from django.views.generic import TemplateView
 #         message = request.POST.get('message')
 #         # print(f"{name} {email} {message}")
 #     return render(request, 'main/index2.html')
+
+from django.views.generic import CreateView
+
+
+class StudentsListView(ListView):
+    template_name = 'main/index3.html'
+    model = Student
+    context_object_name = 'student_key'
+
+
+class StudentDetailView(DetailView):
+    model = Student
+    template_name = 'main/student_detail.html'
 
 
 def index(request) -> HttpResponse:
