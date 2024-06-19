@@ -18,7 +18,8 @@ from mainapp.models import Student
 def index(request) -> HttpResponse:
     student_list = Student.objects.all()
     objects_list = {
-        'student_list': student_list
+        'student_key': student_list,
+        'greeting': 'Hello, World!'
     }
     return render(request, 'main/index3.html', objects_list)
 
