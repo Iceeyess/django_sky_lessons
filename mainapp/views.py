@@ -1,12 +1,13 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from mainapp.models import Student
-from django.views.generic import ListView
+from django.views.generic import TemplateView
 # Create your views here.
 
-class StudentListView(ListView):
-    model = Student
-    template_name = 'main/index.html'
+
+# class StudentListView(TemplateView):
+#     model = Student
+#     template_name = 'main/index3.html'
 
 
 # def index(request) -> HttpResponse:
@@ -31,4 +32,10 @@ def index(request) -> HttpResponse:
 
 def contact(request) -> HttpResponse:
     return render(request, 'main/contact.html')
+
+
+def student_detail(request, student_id):
+    student_resp = Student.objects.get(pk=student_id)
+    d = {'student_resp': student_resp}
+    return render(request, 'main/student_detail.html', d)
 
