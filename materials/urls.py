@@ -8,9 +8,9 @@ app_name = MaterialsConfig.name
 
 urlpatterns = [
     path('create/', views.MaterialCreateView.as_view(), name='create'),
-    # path('', ..., name='list'),
-    # path('view/<int:pk>', ..., name='view'),
-    # path('edit/<int:pk>', ..., name='edit'),
-    # path('delete/<int:pk>', ..., name='delete'),
+    path('', views.MaterialListView.as_view(), name='list'),
+    path('view/<int:pk>/', views.MaterialDetailView.as_view(), name='view'),
+    path('edit/<int:pk>/', views.MaterialUpdateView.as_view(), name='edit'),
+    path('delete/<int:pk>/', views.MaterialDeleteView.as_view(), name='delete'),
 
 ]

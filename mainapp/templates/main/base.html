@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.84.0">
-    <title>Project 5</title>
+    <title>{{ title }}</title>
 
 
     <!-- Bootstrap core CSS -->
@@ -33,9 +33,10 @@
 </head>
 <body>
 
+
 {% include 'main/includes/inc_main_menu_header.html' %}
 
-{% block content %} {# index3.html, material_form.html #}
+{% block content %} {# index3.html, material_form.html, contact.html#}
 
 {% endblock %}
 
@@ -43,14 +44,12 @@
 
 {% endblock %}
 
+
 {% include 'main/includes/inc_main_menu_footer.html' %}
-
-
 
 <script src="{% static 'js/bootstrap.bundle.min.js' %}">
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
         crossorigin="anonymous"></script>
-<script src="/static/popper.min.js"></script>
-<script src="/static/bootstrap.min.js"></script>
+
 </body>
 </html>
