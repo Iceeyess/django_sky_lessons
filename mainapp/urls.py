@@ -1,13 +1,15 @@
 from django.urls import path
 from . import views
 from .apps import MainappConfig
-from materials.views import MaterialListView
 
 app_name = MainappConfig.name
 
 urlpatterns = [
-    path('', views.StudentsListView.as_view(), name='index'),
+    path('', views.StudentListView.as_view(), name='student_list'),
     path('contact/', views.contact, name='contact'),
-    path('student/<int:pk>/', views.StudentDetailView.as_view(), name='student_detail'),
-    path('materials/', MaterialListView.as_view(), name='materials'),
+    path('view/<int:pk>/', views.StudentDetailView.as_view(), name='view_student'),
+    path('create/', views.StudentCreateView.as_view(), name='create_student'),
+    path('edit/<int:pk>/', views.StudentUpdateView.as_view(), name='update_student'),
+    path('delete/<int:pk>/', views.StudentDeleteView.as_view(), name='delete_student'),
+    path('activity/<int:pk>/', views.toggle_activity, name='toggle_activity'),
 ]
