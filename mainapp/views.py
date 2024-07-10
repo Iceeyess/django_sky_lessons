@@ -52,7 +52,7 @@ class StudentCreateView(CreateView):
     model = Student
     fields = ('first_name', 'last_name', 'avatar' )
     # fields = '__all__'
-    success_url = reverse_lazy('mainapp:index')
+    success_url = reverse_lazy('mainapp:student_list')
     template_name = 'main/student_form.html'
 
 def index(request) -> HttpResponse:
