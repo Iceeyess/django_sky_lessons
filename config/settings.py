@@ -57,7 +57,10 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            BASE_DIR / 'templates'
+            BASE_DIR / 'templates',
+            BASE_DIR / 'templates/mainapp',
+            BASE_DIR / 'templates/materials',
+            BASE_DIR / 'templates/users',
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -131,6 +134,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / 'media'
+MEDIA_ROOT = BASE_DIR / 'media/'
 
-AUTH_USER_MODEL = 'users.User'
+AUTH_USER_MODEL = 'users.User'  #  Изменение модели автормзации
+LOGIN_REDIRECT_URL = 'mainapp:student_list'
+LOGOUT_REDIRECT_URL = 'users:login'
+LOGIN_URL = 'mainapp:student_list'
