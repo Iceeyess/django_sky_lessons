@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
 from .models import Material
 from django.views.generic import CreateView, ListView, DetailView, UpdateView, DeleteView
@@ -7,7 +8,7 @@ from pytils.translit import slugify
 # Create your views here.
 
 
-class MaterialCreateView(CreateView):
+class MaterialCreateView(LoginRequiredMixin, CreateView):
     model = Material
     fields = ('title', 'description',)
     success_url = reverse_lazy('materials:list')
@@ -21,7 +22,7 @@ class MaterialCreateView(CreateView):
         return super().form_valid(form)
 
 
-class MaterialUpdateView(UpdateView):
+class MaterialUpdateView(LoginRequiredMixin, UpdateView):
     model = Material
     fields = ('title', 'description',)
     success_url = reverse_lazy('materials:list')
@@ -39,7 +40,7 @@ class MaterialUpdateView(UpdateView):
         return reverse('materials:view', args=[self.kwargs.get('pk')])
 
 
-class MaterialDeleteView(DeleteView):
+class MaterialDeleteView(LoginRequiredMixin, DeleteView):
     model = Material
     success_url = reverse_lazy('materials:list')
 
@@ -53,7 +54,7 @@ class MaterialListView(ListView):
         return queryset
 
 
-class MaterialDetailView(DetailView):
+class MaterialDetailView(LoginRequiredMixin, DetailView):
     model = Material
 
     def get_object(self, queryset=None):

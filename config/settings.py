@@ -139,4 +139,4 @@ MEDIA_ROOT = BASE_DIR / 'media/'
 AUTH_USER_MODEL = 'users.User'  #  Изменение модели автормзации
 LOGIN_REDIRECT_URL = 'mainapp:student_list'
 LOGOUT_REDIRECT_URL = 'users:login'
-LOGIN_URL = 'mainapp:student_list'
+LOGIN_URL = 'users:login'
