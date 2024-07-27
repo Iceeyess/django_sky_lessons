@@ -1,8 +1,13 @@
 from django.contrib.auth.decorators import login_required, permission_required
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin, UserPassesTestMixin
+from django.core.cache import cache
+from django.forms import inlineformset_factory
 from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse
-from mainapp.models import Student
+
+from config import settings
+from mainapp.forms import SubjectForm
+from mainapp.models import Student, Subject
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy, reverse
 
@@ -39,6 +44,13 @@ class StudentUpdateView(LoginRequiredMixin, PermissionRequiredMixin, UpdateView)
     success_url = reverse_lazy('mainapp:student_list')
     permission_required = 'mainapp.change_student'
 
+    def get_success_url(self, *args, **kwargs):
+        return reverse('main:students_update', args=[self.get_object().pk])
+
+
+
+
+
 
 class StudentDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     template_name = 'main/student_confirm_delete.html'
@@ -53,6 +65,20 @@ class StudentDetailView(LoginRequiredMixin, PermissionRequiredMixin, DetailView)
     model = Student
     template_name = 'main/student_detail.html'
     permission_required = 'mainapp.view_student'
+
+    def get_context_data(self, **kwargs):
+        context_data = super().get_context_data(**kwargs)
+        if settings.CACHE_ENABLED:
+            key = f'subject_list_{self.object.pk}'
+            subject_list = cache.get(key)
+            if subject_list is None:
+                subject_list = self.object.subject_set.all()
+                cache.set(key, subject_list)
+        else:
+            subject_list = self.object.subject_set.all()
+
+        context_data['subject_list'] = subject_list
+        return context_data
 
 
 class StudentCreateView(LoginRequiredMixin, PermissionRequiredMixin, CreateView):

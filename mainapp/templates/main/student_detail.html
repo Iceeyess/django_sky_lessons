@@ -1,11 +1,62 @@
 {% extends 'main/base.html'%}
 {% block student_detail %}
-<div class="card" style="width: 18rem;">
-    <div class="card-body">
-        <p class="card-text">Имя:{{ object.first_name }}</p>
-        <p class="card-text">Фамилия:{{ object.last_name }}</p>
-        <p class="card-text">Email:{{ object.email }}</p>
-        <img src="/media/{{object.avatar}}" style="object-fit: cover; width: 100%; height: 50%"/>
+
+<div class="row">
+
+    <div class="col-6">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">
+                    Профиль студента
+                </h3>
+            </div>
+            <div class="card-body">
+                <table class="table">
+                    <tr>
+                        <td>Имя</td>
+                        <td>{{ object.first_name }}</td>
+                    </tr>
+                    <tr>
+                        <td>Фамилия</td>
+                        <td>
+                            {{ object.last_name }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Почта</td>
+                        <td>
+                            {{ object.email }}
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="card-footer"></div>
+        </div>
+    </div>
+    <div class="col-6">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">
+                    Предметы студента
+                </h3>
+            </div>
+            <div class="card-body">
+                {% for subject in object.subject_set.all %}
+                {% endfor %}
+            </div>
+            <div class="card-footer">
+
+            </div>
+
+        </div>
     </div>
 </div>
+<!--<div class="card" style="width: 18rem;">-->
+<!--    <div class="card-body">-->
+<!--        <p class="card-text">Имя:{{ object.first_name }}</p>-->
+<!--        <p class="card-text">Фамилия:{{ object.last_name }}</p>-->
+<!--        <p class="card-text">Email:{{ object.email }}</p>-->
+<!--        <img src="/media/{{object.avatar}}" style="object-fit: cover; width: 100%; height: 50%"/>-->
+<!--    </div>-->
+<!--</div>-->
 {% endblock %}

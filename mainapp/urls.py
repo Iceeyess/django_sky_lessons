@@ -1,11 +1,13 @@
 from django.urls import path
+from django.views.decorators.cache import cache_page
+
 from . import views
 from .apps import MainappConfig
 
 app_name = MainappConfig.name
 
 urlpatterns = [
-    path('', views.StudentListView.as_view(), name='student_list'),
+    path('', cache_page(60)(views.StudentListView.as_view()), name='student_list'),
     path('contact/', views.contact, name='contact'),
     path('view/<int:pk>/', views.StudentDetailView.as_view(), name='view_student'),
     path('create/', views.StudentCreateView.as_view(), name='create_student'),
